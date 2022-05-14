@@ -1,0 +1,53 @@
+<h1 mat-dialog-title><img src="../../../../../assets/images/uib.png"></h1>
+<div mat-dialog-content>
+   <form  #f="ngForm" (ngSubmit)="add(f)" >
+       <div style="display:flex; flex-direction:row ; " class="form">
+            <div class="first">
+    <mat-form-field appearance="fill">
+        <mat-label>nom</mat-label>
+        <input name="nom" #nom="ngModel" ngModel matInput  >
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>prenom</mat-label>
+        <input     name="prenom" #prenom="ngModel" ngModel matInput  >
+      </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input     matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
+    </div>
+    <div  style="padding-left:10px ;" class="second">
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input  name="mdp" #mdp="ngModel" ngModel  type="password" matInput  >
+  </mat-form-field><br>
+  <mat-form-field appearance="fill">
+    <mat-label>numtel</mat-label>
+    <input  name="numtel" #numtel="ngModel"  ngModel matInput >
+  </mat-form-field><br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>cin</mat-label>
+    <input name="cin" #cin="ngModel"  ngModel   matInput  >
+  </mat-form-field><br>
+  <input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+</div>
+<mat-radio-group  name="gendre" #gendre="ngModel"  ngModel style="padding-left:10px ;" aria-label="Select an option">
+    <mat-radio-button    value="male">male</mat-radio-button>
+    <mat-radio-button  value="female">female</mat-radio-button>
+  </mat-radio-group><br>
+  <br>
+</div>
+<div class="inline">
+    <!-- <button (click)="login()" class="btn" mat-button color="primary">Login</button>  -->
+    <button  style="color: red;" class="btn btnr" mat-button color="accent">registre</button>
+  </div>
+</form>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+ <!-- <button mat-button [mat-dialog-close]="data.password" cdkFocusInitial>Ok</button> -->
+</div>

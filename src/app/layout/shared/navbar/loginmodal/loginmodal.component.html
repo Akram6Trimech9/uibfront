@@ -1,0 +1,26 @@
+
+<h1 mat-dialog-title><img src="../../../../../assets/images/uib.png"></h1>
+<div mat-dialog-content>
+   <form >
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid" >{{getErrorMessage()}}</mat-error>
+      </mat-form-field><br>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input  type="password" matInput  [formControl]="password" required>
+    <mat-error *ngIf="email.invalid" >{{getErrorMessage2()}}</mat-error>
+  </mat-form-field>
+  <br>
+</form>
+
+  <div class="inline">
+  <button  (click)="add()" class="btn" mat-button color="primary">Login</button> 
+  <button (click)="registre()" class="btn btnr" mat-button color="accent">Create an account</button>
+</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+ <!-- <button mat-button [mat-dialog-close]="data.password" cdkFocusInitial>Ok</button> -->
+</div>

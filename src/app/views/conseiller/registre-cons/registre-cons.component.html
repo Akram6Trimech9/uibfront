@@ -1,0 +1,93 @@
+<div class="hold-transition register-page">
+    <div class="register-box">
+      <div class="register-logo">
+        <a href="../../index2.html"><b>Conseiller</b>UIB</a>
+      </div>
+    
+      <div class="card">
+        <div class="card-body register-card-body">
+          <p class="login-box-msg">Register a new membership</p>
+          <form #f="ngForm" (ngSubmit)="add(f)" >
+            <div class="input-group mb-3" >
+            <select ngModel name="option" class="form-control"    (change)= "Function(t.value)"   #t>
+                <option *ngFor="let op of agences" [value]="op._id"    >
+                    {{op.title}} 
+                </option>
+            </select>  
+          </div>
+            <div class="input-group mb-3">
+              <input name="nom" ngModel #nom="ngModel" type="text" class="form-control" placeholder=" name">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+                <input    name="prenom" #prenom="ngModel" ngModel  type="text" class="form-control" placeholder="last name">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                  </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input  name="cin" #cin="ngModel" ngModel type="text" class="form-control" placeholder="Cin">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-map"></span>
+                  </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input name="numtel" #numtel="ngModel"  ngModel type="text" class="form-control" placeholder="num tel">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-phone"></span>
+                  </div>
+                </div>
+            </div>
+            <input type="file" class="file-input" style="padding-bottom:15px ;" (change)="onFileSelected($event)" #fileUpload > <br>
+            <div class="input-group mb-3">
+              <input  name="email" #email="ngModel"  ngModel type="email" class="form-control" placeholder="Email">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input  name="mdp" #mdp="ngModel"  ngModel type="password" class="form-control" placeholder="Password">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            
+            <div style="padding-left: 5px; padding-bottom: 5px;" class="form-check form-check-inline">
+                <mat-radio-group  name="gendre" #gendre="ngModel"  ngModel  aria-label="Select an option">
+                    <mat-radio-button    value="male">male</mat-radio-button>
+                    <mat-radio-button  value="female">female</mat-radio-button>
+                  </mat-radio-group><br>
+                  </div>
+            <div class="row">
+              <div class="col-8">
+                <div class="icheck-primary">
+                  <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                
+                </div>
+              </div>
+              <!-- /.col -->
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+          <a   routerLinkActive="active" routerLink="/conseillerlogin"  class="text-center">I already have a membership</a>
+        </div>
+        <!-- /.form-box -->
+      </div><!-- /.card -->
+    </div>
+    </div>

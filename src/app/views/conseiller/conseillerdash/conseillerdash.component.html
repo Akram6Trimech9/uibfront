@@ -1,0 +1,129 @@
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Calendar</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Calendar</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="sticky-top mb-3">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title"> Events</h4>
+                </div>
+                <div class="card-body">
+                  <!-- the events -->
+                  <div id="external-events">
+                    <div class="external-event bg-success">work</div>
+                       <div class="external-event bg-danger">reserved</div>
+                     
+                  </div>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Create Event</h3>
+                </div>
+                <div class="card-body">
+                  <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                    <ul class="fc-color-picker" id="color-chooser">
+                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                    </ul>
+                  </div>
+                  <!-- /btn-group -->
+                  <div class="input-group">
+                    <input disabled id="new-event" type="text" class="form-control" placeholder="Add Event">
+
+                    <div class="input-group-append">
+                      <button  data-toggle="modal" data-target="#exampleModal"  id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                    </div>
+                    <!-- /btn-group -->
+                  </div>
+                  <!-- /input-group -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="card card-primary">
+              <div style="width: 700px; height: 500px;" class="card-body width">
+                <!-- THE CALENDAR -->
+                <full-calendar  [options]="calendarOptions"></full-calendar>
+
+               </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add To calendar</h5>
+          <button #CloseModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="add(f)" >
+                <div class="external-event bg-success">work</div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">1'st day</label>
+                  <input name="firstday" ngModel #firstday="ngModel" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter 1st day">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">last day</label>
+                  <input  name="lastday" ngModel #lastday="ngModel" type="date" class="form-control" id="exampleInputPassword1" placeholder="lastday">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">starthour</label>
+                    <input  name="starthour" ngModel #starthour="ngModel" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="starthour">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">lasthour</label>
+                    <input name="lasthour" ngModel #lasthour="ngModel" type="time" class="form-control" id="exampleInputPassword1" placeholder="lasthour">
+                  </div>
+                <div class="external-event bg-danger">reserved</div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">begin</label>
+                    <input name="begin" ngModel #begin="ngModel" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="begin">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">end</label>
+                    <input name="end" ngModel #end="ngModel" type="date" class="form-control" id="exampleInputPassword1" placeholder="end">
+                  </div>
+                <button  style="margin-left:400px;" type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
