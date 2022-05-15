@@ -41,17 +41,16 @@ export class HomeComponent implements OnInit {
 Calendar:boolean=true
 Function(id:any){
   this.selectedConseiller=id
-  console.log(id)
   if(this.selectedConseiller!=null){
     this.router.navigate([`calendar`,id]);
     this.closeModal.nativeElement.click() 
 
-
   }
   }
   Conseiller:any=[]
-   goto(id:Event){
-   console.log(id)
+
+   goto(id:String){
+      console.log(id)
      this.agenceservice.getagenceByid(id).subscribe(res=>{
         this.Conseiller=res.conseillers
         console.log(this.Conseiller)

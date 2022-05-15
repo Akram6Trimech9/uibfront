@@ -22,8 +22,6 @@ Calendrier:any;
 Events: any[] = [];
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
-      console.log(params) 
-      this.id=params['id']
       console.log(params['id']) 
       this.userService.getuserByid(this.id).subscribe(res=>{
         this.Conseiller=res
@@ -42,7 +40,6 @@ Events: any[] = [];
               title: `Work @${this.Calendrier.starthour} jusquA ${this.Calendrier.lasthour}`
             },
             )
-            console.log(this.Events)
       })
     });
   }

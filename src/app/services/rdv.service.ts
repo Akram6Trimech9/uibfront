@@ -17,6 +17,9 @@ export class RdvService {
   getrdvbyconseiller(id:any):Observable<any>{
     return this.http.get<any>(`${this.url}/conseiller/${id}`)
   }
+  confirmerRdv(id:any,idclient:any,confirmed:boolean):Observable<any>{
+    return this.http.post<any>(`${this.url}/confirm/${id}/${idclient}`,{confirmed});
+  }
 
 }
 

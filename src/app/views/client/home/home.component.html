@@ -12,7 +12,7 @@
       <div *ngFor="let obj of Agences" class="w3-col l3 m6 w3-margin-bottom">
         <div  data-toggle="modal" data-target="#exampleModal" class="w3-display-container">
           <div class="w3-display-topleft w3-black w3-padding">{{obj.title}}</div>
-          <img (click)="goto(obj._id)" src={{obj.image}} alt="House" height="300px" >
+          <img (click)="goto(obj.id)" src={{obj.image}} alt="House" height="300px" >
         </div>
       </div>
        </div>

@@ -36,7 +36,7 @@ export class ConseillerdashComponent implements OnInit {
             start:this.Calendrier.firstday.slice(0,this.Calendrier.firstday.length-14),
             end:this.Calendrier.lastday.slice(0,this.Calendrier.lastday.length-14),
             color:'#008000',
-            textColor:'blue',
+            textColor:'white',
           
             title: `Work @${this.Calendrier.starthour} jusquA ${this.Calendrier.lasthour}`
           },
@@ -75,9 +75,10 @@ export class ConseillerdashComponent implements OnInit {
     }
     }
     this.calendarService.createCalendar(this.id,calendar).subscribe(res=>{
-      console.log("Calendar Added")
-      this._snackBar.open("rdv Added");
+      this._snackBar.open("Calendar added");
+
       this.CloseModal.nativeElement.click() 
+      window.location.reload()
   })
   }
  

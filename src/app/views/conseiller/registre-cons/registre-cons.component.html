@@ -10,7 +10,7 @@
           <form #f="ngForm" (ngSubmit)="add(f)" >
             <div class="input-group mb-3" >
             <select ngModel name="option" class="form-control"    (change)= "Function(t.value)"   #t>
-                <option *ngFor="let op of agences" [value]="op._id"    >
+                <option *ngFor="let op of agences" [value]="op._id" >
                     {{op.title}} 
                 </option>
             </select>  

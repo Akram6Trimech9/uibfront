@@ -64,23 +64,19 @@ Title
                             </div>
                         </div> -->
                         {{obj.title}}
-                        <small>
-                            57% Complete
-                        </small>
+                     
                     </td>
                     <td class="project-state">
-                        <span class="badge badge-warning">Success</span>
+                        <span *ngIf="obj.confirmed==true" class="badge badge-success">confirmed</span>
+                        <span *ngIf="obj.confirmed==false" class="badge badge-warning">not confirmed</span>
+
                     </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
+                    <td  class="project-actions text-right">
+                        <a *ngIf="obj.confirmed==false" class="btn btn-info btn-sm" (click)="confirmRdv(obj)">
                             Confirmer
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
+                        <a *ngIf="obj.confirmed==false" class="btn btn-danger btn-sm" (click)="refuserRdv(obj)">
+                            Refuser
                         </a>
                     </td>
                 </tr>

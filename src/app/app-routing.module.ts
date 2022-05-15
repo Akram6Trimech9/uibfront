@@ -7,6 +7,9 @@ import { ConseillerComponent } from './layout/conseiller/conseiller.component';
 import { RegistreAdminLayoutComponent } from './layout/registre-admin-layout/registre-admin-layout.component';
 import { LoginComponent } from './views/conseiller/login/login.component';
 import { RegistreConsComponent } from './views/conseiller/registre-cons/registre-cons.component';
+
+
+
 const routes: Routes = [
   //client
   {path:'',component:ClientComponent,children:[

@@ -18,5 +18,25 @@ ConseillerRdv:any[]=[]
    console.log(this.ConseillerRdv)
     })
   }
+  confirmRdv(rdv:any){
+    let index = rdv.participants.findIndex((participant:any) => { return participant._id != this.userService.getuserid()});
+    this.rdvService.confirmerRdv(rdv._id,rdv.participants[index]._id,true).subscribe((res:any)=>{
+      let  rdvindex = this.ConseillerRdv.findIndex((rdv:any)=>{
+        return rdv._id == res.rdv_updated._id
+      })
+      this.ConseillerRdv[rdvindex].confirmed=true;
+
+    
+    }
+      
+      )
+  }
+  refuserRdv(rdv:any){
+    let index = rdv.participants.findIndex((participant:any) => { return participant._id != this.userService.getuserid()});
+    this.rdvService.confirmerRdv(rdv._id,rdv.participants[index]._id,false).subscribe((res:any)=>{
+    }
+      
+      )
+  }
 
 }

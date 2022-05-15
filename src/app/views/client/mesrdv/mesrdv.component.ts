@@ -15,9 +15,9 @@ text:string=''
     this.rdvService.getrdvbyclient(this.clientService.getuserid()).subscribe(res=>{
     this.rdv=res
     if(!res.confirmed){
-this.text="en att"
+this.text="en attente"
     }else{
-      this.text="accp"
+      this.text="accepté"
     }
     console.log(res)
     })
