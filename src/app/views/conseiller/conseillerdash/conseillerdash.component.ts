@@ -4,6 +4,7 @@ import { CalendarOptions } from '@fullcalendar/angular';
 import { NgForm } from '@angular/forms';
 import { CalendarService } from 'src/app/services/calendar.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { io, Socket } from 'socket.io-client';
 
 @Component({
   selector: 'app-conseillerdash',
@@ -11,9 +12,13 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./conseillerdash.component.css']
 })
 export class ConseillerdashComponent implements OnInit {
+
   @ViewChild('CloseModal', {static: true}) CloseModal!: ElementRef;
 
-  constructor(private _snackBar: MatSnackBar,private userauth:UsersauthService,private calendarService:CalendarService) { }
+  constructor(private _snackBar: MatSnackBar,private userauth:UsersauthService,private calendarService:CalendarService) {
+   }
+
+
   Events: any[] = [];
   id=''
   image=''
@@ -21,6 +26,7 @@ export class ConseillerdashComponent implements OnInit {
   Calendrier:any
   calendarOptions: CalendarOptions = {}
   ngOnInit(): void {
+
     this.id=this.userauth.getuserid()
     this.userauth.getuserByid(this.id).subscribe(res=>{
       this.Conseiller=res

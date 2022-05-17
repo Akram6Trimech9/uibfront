@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersauthService } from 'src/app/services/usersauth.service';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { SocketIoService } from 'src/app/services/socket-io.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private adminService:UsersauthService,private router:Router) { }
+  constructor(private adminService:UsersauthService,private router:Router,private socketio : SocketIoService) { }
 
   ngOnInit(): void {
   }
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
      'mdp':f.value.mdp
    }
    this.adminService.Login(conseillerLogin).subscribe((data)=>{
-     this.adminService.issavetoken(data.token,data.role,data.nom)
+    this.socketio.connectToServer(data.token); 
+    this.adminService.issavetoken(data.token,data.role,data.nom)
+
+     
      this.router.navigate(['conseiller/calendar'])
      })
     }

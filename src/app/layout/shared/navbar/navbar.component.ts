@@ -3,22 +3,39 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Router } from '@angular/router';
 import { UsersauthService } from 'src/app/services/usersauth.service';
 import { LoginmodalComponent } from './loginmodal/loginmodal.component';
+import { SocketIoService } from 'src/app/services/socket-io.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+
 })
 export class NavbarComponent implements OnInit {
+
 username:any
-  constructor(public dialog: MatDialog,public clientService:UsersauthService,private router:Router) { }
-variable:boolean=false
+notifications : [] =[];
+
+  constructor(public dialog: MatDialog,public clientService:UsersauthService,private router:Router,private socket : SocketIoService) {      
+  }
+  variable:boolean=false
+  
+  
   ngOnInit(): void {
+    
+   this.socket.getNotifications("rdv-confirmed-client").subscribe((res)=>{
+     console.log(res);
+   },(err)=>{
+      console.log(err);
+   });
+
+
     if(this.clientService.ClientLoggedIn()){
      this.variable=true
     }
-
    this.username=this.clientService.getusername()
+
+  
   }
   logout(){
     this.clientService.logOut()
@@ -38,5 +55,6 @@ variable:boolean=false
      
       });
   }
+ 
 
 }

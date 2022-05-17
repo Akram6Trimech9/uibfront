@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/MaterialModule';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     MaterialModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+
  
    ],
   providers: [

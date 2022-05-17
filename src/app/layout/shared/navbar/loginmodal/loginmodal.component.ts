@@ -8,6 +8,7 @@ import { client } from 'src/app/Models/client';
 import { RegistreModalComponent } from '../registre-modal/registre-modal.component';
 import { UsersauthService } from 'src/app/services/usersauth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SocketIoService } from 'src/app/services/socket-io.service';
 @Component({
   selector: 'app-loginmodal',
   templateUrl: './loginmodal.component.html',
@@ -35,6 +36,7 @@ getErrorMessage2() {
 constructor(
   private authService:UsersauthService,
   public dialog: MatDialog,
+  private socketio : SocketIoService,
     public dialogRef: MatDialogRef<LoginmodalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: client,
   ) { }
@@ -63,7 +65,9 @@ constructor(
       "mdp":this.password.value
     }
    this.authService.Login(ClientLogin).subscribe((data)=>{
+      this.socketio.connectToServer(data.token);
       this.authService.issavetoken(data.token,data.role,data.nom)
+
       window.location.reload()
       this.dialogRef.close();
     },(err:HttpErrorResponse)=>{

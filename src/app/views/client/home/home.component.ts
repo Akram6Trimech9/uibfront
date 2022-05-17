@@ -43,14 +43,13 @@ Function(id:any){
   this.selectedConseiller=id
   if(this.selectedConseiller!=null){
     this.router.navigate([`calendar`,id]);
-    this.closeModal.nativeElement.click() 
+    this.closeModal.nativeElement.click() }
 
-  }
+    
   }
   Conseiller:any=[]
 
    goto(id:String){
-      console.log(id)
      this.agenceservice.getagenceByid(id).subscribe(res=>{
         this.Conseiller=res.conseillers
         console.log(this.Conseiller)
