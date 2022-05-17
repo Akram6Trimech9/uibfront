@@ -16,6 +16,7 @@ const routes: Routes = [
     {path:'',loadChildren:()=>import('./views/client/home/home.module').then(m=>m.HomeModule)},
    {path:'calendar/:id',loadChildren:()=>import('./views/client/calendar/calendar.module').then(m=>m.CalendarModule)},
     {path:'rdv',loadChildren:()=>import('./views/client/mesrdv/mesrdv.module').then(m=>m.MesrdvModule)},
+    {path:'agences',loadChildren:()=>import('./views/client/agences/agence.module').then(m=>m.AgenceModule)}
    ]},
    //admin
   {path:'admin',component:AdminComponent,children:[

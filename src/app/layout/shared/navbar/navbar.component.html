@@ -5,6 +5,8 @@
       <div  style="padding-top: 20px;" class="w3-right w3-hide-small">
         <a routerLinkActive="active" routerLink="" class="w3-bar-item w3-button">Accueil</a>
         <a  routerLinkActive="active" routerLink="rdv" class="w3-bar-item w3-button">Mes RDV</a>
+        <a  routerLinkActive="active" routerLink="agences" class="w3-bar-item w3-button">Agences</a>
+
         <a *ngIf="!variable" class="w3-bar-item w3-button" (click)="openDialog()" >Login</a>
         <a  *ngIf="variable" (click)="logout()" class="w3-bar-item w3-button"  >Logout<small>({{username}})</small></a>
 

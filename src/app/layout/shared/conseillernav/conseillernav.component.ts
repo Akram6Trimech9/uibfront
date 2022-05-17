@@ -18,12 +18,6 @@ export class ConseillernavComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.notificationService.getNotifications(this.userauth.getuserid()).subscribe((res: any[])=>{
-        this.notifications=res;
-        console.log(res);
-        this.notifnum=res.length.toString()
-      })
-
 
     this.Name=this.userauth.getusername()
     this.userauth.getuserByid(this.userauth.getuserid()).subscribe(res=>{
@@ -31,11 +25,12 @@ export class ConseillernavComponent implements OnInit {
 
     })
 
-
-
+    this.notificationService.getNotifications(this.userauth.getuserid()).subscribe((res: any[])=>{
+      this.notifications=res;
+      this.notifnum=res.length.toString()
+    })
 
   }
-
 
 
   logout(){

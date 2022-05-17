@@ -1,8 +1,3 @@
-<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-  <img  class="w3-image" src="../../../../assets/images/background.png" alt="Architecture" width="1500" height="800">
-
-</header>
-<div class="w3-content w3-padding" style="max-width:1564px">
 
     <!-- Project Section -->
     <div class="w3-container w3-padding-32" id="projects">
@@ -10,9 +5,23 @@
     </div>
     <div  class="w3-row-padding">
       <div *ngFor="let obj of Agences" class="w3-col l3 m6 w3-margin-bottom">
-        <div  data-toggle="modal" data-target="#exampleModal" class="w3-display-container">
-          <div class="w3-display-topleft w3-black w3-padding">{{obj.title}}</div>
-          <img (click)="goto(obj.id)" src={{obj.image}} alt="House" height="300px" >
+        <div    class="w3-display-container">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{obj.title}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src={{obj.image}} alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                  {{obj.addresse}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button data-toggle="modal" data-target="#exampleModal" (click)="goto(obj._id)"  mat-button>lancer Rendez-vous</button>
+            </mat-card-actions>
+          </mat-card>
+          
         </div>
       </div>
        </div>
@@ -24,15 +33,14 @@
               <form  [formGroup]="form">
                 <label for="selectAction">Choisir un conseiller : </label>
                 <select ngModel name="option" class="form-control"    (change)= "Function(t.value)" #t>
-                    <option *ngFor="let op of Conseiller" [value]="op._id"    >
+                    <option *ngFor="let op of Conseiller" [value]="op._id">
                         {{op.nom}} 
                     </option>
                 </select>  
                   </form>
             </div>            </div>
             <div class="modal-footer">
-              <button  #closeModal type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button  #closeModal type="button" class="btn btn-secondary" data-dismiss="modal" style="cursor:pointer;">Close</button>
              </div>
           </div>
         </div>
-      </div>
