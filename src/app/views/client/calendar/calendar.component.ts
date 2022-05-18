@@ -22,10 +22,12 @@ Calendrier:any;
 Events: any[] = [];
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
-      console.log(params['id']) 
+
+      this.id=params['id']
       this.userService.getuserByid(this.id).subscribe(res=>{
         this.Conseiller=res
         this.Calendrier=res.calendar
+        console.log(res.calendar)
             this.Events.push({
               start:this.Calendrier.notavailabledays.begin.slice(0,this.Calendrier.notavailabledays.begin.length-14),
               end:this.Calendrier.notavailabledays.end.slice(0,this.Calendrier.notavailabledays.end.length-14),
@@ -71,7 +73,8 @@ Events: any[] = [];
      "hour":f.value.time,
      "participants":this.participants
     } 
-  this.rdvservice.createnewrdv(rdv).subscribe(res=>{
+
+  this.rdvservice.createnewrdv(rdv,this.id).subscribe(res=>{
     this._snackBar.open("rdv Added");
     window.location.reload()
 

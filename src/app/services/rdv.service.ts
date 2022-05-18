@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class RdvService {
   url="http://localhost:3000/rdv";
   constructor(private http:HttpClient){ }
-   createnewrdv(rdv:any):Observable<any>{
-    return this.http.post<any>(`${this.url}/`,rdv)
+   createnewrdv(rdv:any,idconseiller:String):Observable<any>{
+    return this.http.post<any>(`${this.url}/${idconseiller}`,rdv)
   }
   getrdvbyclient(id:any):Observable<any>{
     return this.http.get<any>(`${this.url}/conseiller/${id}`)
