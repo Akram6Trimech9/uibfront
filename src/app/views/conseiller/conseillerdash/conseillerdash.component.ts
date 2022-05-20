@@ -86,6 +86,29 @@ export class ConseillerdashComponent implements OnInit {
       this.CloseModal.nativeElement.click() 
       window.location.reload()
   })
+
+
+  }
+ update(updateform:NgForm){
+  
+    const calendar:any={
+    "firstday":updateform.value.firstday,
+    "lastday":updateform.value.lastday,
+    "starthour":updateform.value.starthour,
+    "lasthour":updateform.value.lasthour,
+    "notavailabledays":{
+      "begin":updateform.value.begin,
+      "end":updateform.value.end,
+    }
+    }
+    this.calendarService.updateCalendar(this.Calendrier._id,calendar).subscribe(res=>{
+      this._snackBar.open("Calendar updated");
+
+      this.CloseModal.nativeElement.click() 
+      window.location.reload()
+  })
+
+  
   }
  
 

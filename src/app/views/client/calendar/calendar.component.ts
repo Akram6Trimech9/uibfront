@@ -56,11 +56,23 @@ Events: any[] = [];
   };
   date!:string
   handleDateClick(arg: { dateStr: string; }) {
-    this.openModal.nativeElement.click() 
+    console.log(arg.dateStr)
+    console.log(this.Calendrier.notavailabledays.begin.split('T')[0])
+    console.log(this.Calendrier.notavailabledays.end.split('T')[0])
+    if(arg.dateStr >= this.Calendrier.notavailabledays.begin.split('T')[0] && this.Calendrier.notavailabledays.end.split('T')[0]){
+      this._snackBar.open("conseiller n'est pas disponible");
 
-     this.date=arg.dateStr
-    //alert('date click! ' + arg.dateStr)
-    //eventColor: '#378006'
+    }
+    else {
+      this.openModal.nativeElement.click() 
+
+    }
+    this.date=arg.dateStr
+   //alert('date click! ' + arg.dateStr)
+   
+   //eventColor: '#378006'
+
+
   }
   variable:boolean=true ;
   participants:any=[]

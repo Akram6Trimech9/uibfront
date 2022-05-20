@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AgenceService } from 'src/app/services/agence.service';
+import { SocketIoService } from 'src/app/services/socket-io.service';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,8 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+      
+ 
     this.getallAgences()
     //this.getconseiller()
   }

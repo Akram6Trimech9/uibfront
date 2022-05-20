@@ -18,8 +18,16 @@ export class MesrdvComponent implements OnInit {
       const conseiller = rend.participants[rend.participants.findIndex((participant: any)=>{return participant._id != this.clientService.getuserid()})]
       rend.conseiller = conseiller.nom + " " + conseiller.prenom;
     })
-    
     })
+  }
+  annulerRdv(rdv:any){
+    let index = rdv.participants.findIndex((participant:any) => { return participant._id !== this.clientService.getuserid()});
+this.rdvService.annulerrdv(rdv._id,rdv.participants[index]._id).subscribe(res=>{
+  if (res){
+    this.rdv = this.rdv.filter(rendv=>rendv._id!=rdv._id);
+  }
+})
+
   }
 
 }

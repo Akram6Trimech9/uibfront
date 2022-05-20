@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
    this.adminService.Login(conseillerLogin).subscribe((data)=>{
     this.socketio.connectToServer(data.token); 
     this.adminService.issavetoken(data.token,data.role,data.nom)
-
      
      this.router.navigate(['conseiller/calendar'])
      })

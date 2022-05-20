@@ -13,18 +13,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr *ngFor="let obj of rdv ">
+					<tr *ngFor="let obj of rdv">
                         <td>{{obj.title}}</td>
 						<td>{{obj.date}} </td>
 						<td>{{obj.hour}} </td>
 						<th>{{obj.conseiller}}</th>
-
             <td *ngIf="obj.confirmed == false">en attente</td>
 			<td *ngIf="obj.confirmed == true">accepté</td>
-
 			<td  class="project-actions text-right">
-				<a  style="color: white;" class="btn btn-danger btn-xs " >
-					supprimer
+				<a (click)="annulerRdv(obj)" style="color: white;" class="btn btn-danger btn-xs " >
+					annuler
 				</a>	
 			</td>
 			<td><a style="color: white;" class="btn btn-success btn-xs" >
@@ -35,9 +33,6 @@
 					</tr>	
 				</tbody>
 			</table>
-
 		</div>
-		
 	</div>   
-    
 </div>

@@ -36,7 +36,7 @@ getErrorMessage2() {
 constructor(
   private authService:UsersauthService,
   public dialog: MatDialog,
-  private socketio : SocketIoService,
+  private socket : SocketIoService,
     public dialogRef: MatDialogRef<LoginmodalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: client,
   ) { }
@@ -65,7 +65,7 @@ constructor(
       "mdp":this.password.value
     }
    this.authService.Login(ClientLogin).subscribe((data)=>{
-      this.socketio.connectToServer(data.token);
+      this.socket.connectToServer(data.token);
       this.authService.issavetoken(data.token,data.role,data.nom)
 
       window.location.reload()

@@ -8,7 +8,18 @@ import { Observable } from 'rxjs';
 export class CalendarService {
   url="http://localhost:3000/calendar";
   constructor(private http:HttpClient) { }
+
+
+
   createCalendar(id:any ,calendar:any) :Observable<any>{
     return this.http.post<any>(`${this.url}/${id}`,calendar)
   }
+
+
+  updateCalendar(id:any ,calendar:any) :Observable<any>{
+    return this.http.patch<any>(`${this.url}/${id}`,calendar)
+  }
+
+
+
 }

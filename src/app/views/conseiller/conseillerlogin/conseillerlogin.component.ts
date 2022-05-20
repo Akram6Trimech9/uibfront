@@ -9,11 +9,15 @@ import { UsersauthService } from 'src/app/services/usersauth.service';
   styleUrls: ['./conseillerlogin.component.css']
 })
 export class ConseillerloginComponent implements OnInit {
-  constructor(private rdvService:RdvService,private userService:UsersauthService) {  
+  constructor(private rdvService:RdvService,private userService:UsersauthService,private socket:SocketIoService) {  
   }
   
 ConseillerRdv:any[]=[]
     ngOnInit(): void {
+
+     
+
+
     this.rdvService.getrdvbyconseiller(this.userService.getuserid()).subscribe(res=>{
    this.ConseillerRdv=res
    console.log(this.ConseillerRdv)
@@ -22,12 +26,14 @@ ConseillerRdv:any[]=[]
 
 
   confirmRdv(rdv:any){
-    let index = rdv.participants.findIndex((participant:any) => { return participant._id != this.userService.getuserid()});
+    let index = rdv.participants.findIndex((participant:any) => { return participant._id !== this.userService.getuserid()});
     this.rdvService.confirmerRdv(rdv._id,rdv.participants[index]._id,true).subscribe((res:any)=>{
       let  rdvindex = this.ConseillerRdv.findIndex((rdv:any)=>{
         return rdv._id == res.rdv_updated._id
       })
       this.ConseillerRdv[rdvindex].confirmed=true;
+
+      
     })
   }
 

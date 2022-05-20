@@ -10,6 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/MaterialModule';
 import { RouterModule } from '@angular/router';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     FormsModule,
     RouterModule,
+    SocketIoModule.forRoot(config)
 
  
    ],

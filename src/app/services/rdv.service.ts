@@ -20,6 +20,9 @@ export class RdvService {
   confirmerRdv(id:any,idclient:any,confirmed:boolean):Observable<any>{
     return this.http.post<any>(`${this.url}/confirm/${id}/${idclient}`,{confirmed});
   }
+  annulerrdv(id:String,idconseiller:String):Observable<any>{
+    return this.http.delete<any>(`${this.url}/${id}/${idconseiller}`);
+  }
 
 }
 
