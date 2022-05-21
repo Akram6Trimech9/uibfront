@@ -23,6 +23,10 @@ export class AgenceService {
     return this.http.delete<any>(`${this.url}/${id}`)
   }
 
+deleteConseiller(id:String,idconseiller:String):Observable<any>
+{
+  return this.http.delete<any>(`${this.url}/${id}/${idconseiller}`);
+}
 
   getagenceByid(id:any):Observable<any>{
     return this.http.get<any>(`${this.url}/${id}`)

@@ -68,5 +68,9 @@ export class UsersauthService {
   getuserByid(id:any):Observable<any> {
      return this.http.get<any>(`${this.url}/${id}`)
   }
+  
+  validateUser(id:any):Observable<any> {
+    return this.http.patch<any>(`${this.url}/conseiller/validate/${id}`,{})
+ }
 }
 

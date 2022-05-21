@@ -10,8 +10,8 @@ import { NotificationService } from 'src/app/services/notification.service';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-
 })
+
 export class NavbarComponent implements OnInit {
 
 username:any
@@ -33,7 +33,6 @@ notificationnum : String = "0" ;
        })
     },(err)=>{
        console.log(err);})
-
        this.socket.getNotifications("rdv-confirmed-client").subscribe((res:any)=>{
           this.notification.getNotifications(this.clientService.getuserid()).subscribe(_notifications => {
         this.notifications=_notifications ;

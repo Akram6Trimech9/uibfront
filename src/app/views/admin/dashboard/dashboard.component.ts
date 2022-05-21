@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AgenceService } from 'src/app/services/agence.service';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UsersauthService } from 'src/app/services/usersauth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +12,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class DashboardComponent implements OnInit {
   @ViewChild('CloseModal', {static: true}) CloseModal!: ElementRef;
-
+  conseillersByagence : any [] = [];
   Events: any[] = [];
   agences :any [] = [];
-  constructor(private agenceService:AgenceService,private _snackBar: MatSnackBar) { }
+  idagence: String =""
+  constructor(private agenceService:AgenceService,private _snackBar: MatSnackBar,private userService:UsersauthService) { }
 
   ngOnInit(): void {
     this.agenceService.get().subscribe(res=>{
@@ -52,7 +54,29 @@ export class DashboardComponent implements OnInit {
     const file:File = event.target.files[0];
     this.fileselected=file
   }
-  
+
+
+  deleteConseiller(id:String){
+    this.agenceService.deleteConseiller(this.idagence,id).subscribe(res=>{
+      this._snackBar.open("conseiller deleted");
+      this.conseillersByagence=this.conseillersByagence.filter(conseiller=>conseiller._id!=id)
+    })
+  }
+
+
+  validateConseiller(id:String){
+    this.userService.validateUser(id).subscribe(res=>{
+      this._snackBar.open("conseiller validated");
+
+    })
+  }
+
+  showconseillers(id:String){
+    this.idagence=id;
+    this.agenceService.getagenceByid(id).subscribe(res=>{
+      this.conseillersByagence=res.conseillers;
+      console.log(res)})
+  }
   selectedAgence:any
   Function(id:any){
     this.selectedAgence=id

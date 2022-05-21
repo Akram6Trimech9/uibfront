@@ -57,7 +57,7 @@ Addresse
                      
                     </td>
                     <td class="project-state">
-                        <a class="btn btn-info btn-sm "data-toggle="modal" data-target="#conseillersModal" >
+                        <a class="btn btn-info btn-sm "data-toggle="modal" (click)="showconseillers(obj._id)" data-target="#conseillersModal" >
                             show conseillers
                         </a>
 
@@ -153,7 +153,46 @@ Addresse
           </button>
         </div>
         <div class="modal-body">
-           conseillers
+            <table class="table table-striped projects">
+                
+                <tbody>
+                    <tr *ngFor="let obj of conseillersByagence ">
+                        <td>
+                            <a>
+                                {{obj.username}}
+                            </a>
+                            <br/>
+                            <small>
+                             </small>
+                        </td>
+                        <td>
+                            <!-- <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
+                                </li>
+                            </ul> -->
+                            {{obj.email}}
+                        </td>
+                        <td class="project_progress">
+                            {{obj.cin}}
+                         
+                        </td>
+                     
+                        <td  class="project-actions btn-sm">
+                           
+                            <a   class="btn btn-warning btn-xs" (click)="deleteConseiller(obj._id)">
+                                delete
+                            </a>
+                            <a   class="btn btn-success btn-xs" (click)="validateConseiller(obj._id)">
+                                validate
+                            </a>
+                        </td>
+                    </tr>
+                    
+                   
+                </tbody>
+            </table>
+    
         </div>
       </div>
     </div>

@@ -19,9 +19,10 @@ export class AdminnavComponent implements OnInit {
      this.image=res.image})
   }
   
+
   logout(){
     this.userauth.logOut()
-     this.router.navigate(["/conseillerlogin"])
+     this.router.navigate(["/adminlogin"])
   }
 
 }

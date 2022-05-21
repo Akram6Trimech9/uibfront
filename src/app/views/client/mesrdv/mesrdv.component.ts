@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FeedbackService } from 'src/app/services/feedback.service';
 import { RdvService } from 'src/app/services/rdv.service';
 import { UsersauthService } from 'src/app/services/usersauth.service';
 
@@ -8,8 +11,12 @@ import { UsersauthService } from 'src/app/services/usersauth.service';
   styleUrls: ['./mesrdv.component.css']
 })
 export class MesrdvComponent implements OnInit {
-  constructor(private rdvService:RdvService ,private clientService:UsersauthService ) { }
+  @ViewChild('CloseModal', {static: true}) CloseModal!: ElementRef;
+
+  constructor(private rdvService:RdvService ,private clientService:UsersauthService,private feedbackService:FeedbackService,private   _snackBar : MatSnackBar
+  ) { }
   rdv:any[]=[]
+  rdv_id : String ="";
   ngOnInit(): void {
     this.rdvService.getrdvbyclient(this.clientService.getuserid()).subscribe(res=>{
     this.rdv=res
@@ -29,5 +36,19 @@ this.rdvService.annulerrdv(rdv._id,rdv.participants[index]._id).subscribe(res=>{
 })
 
   }
+  addRdv(id:String){
+      this.rdv_id=id;
+  }
 
+  addFeedback(form : NgForm){
+      const feedback = {
+        feedback:form.value.feedback,
+        rdv:this.rdv_id
+      }
+      this.feedbackService.createFeedback(feedback).subscribe(res=>{
+        this._snackBar.open("feedback submited");
+
+      })
+      
+  }
 }
