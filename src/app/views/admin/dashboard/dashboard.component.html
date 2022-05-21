@@ -1,1 +1,160 @@
-<p>dashboard works!</p>
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Agences</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-tool" data-card-widget="add" title="Add">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th style="width: 30%">
+                     </th>
+                    <th style="width: 20%">
+                        Title
+                    </th>
+                    <th>
+Addresse
+                    </th>
+                    <th style="width: 30%" class="text-center">
+                        conseillers
+                    </th>
+                    <th style="width: 40%">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of agences ">
+                    <td>
+                        <a>
+                            {{obj.title}}
+                        </a>
+                        <br/>
+                        <small>
+                         </small>
+                    </td>
+                    <td>
+                        <!-- <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
+                            </li>
+                        </ul> -->
+                        {{obj.title}}
+                    </td>
+                    <td class="project_progress">
+                        {{obj.addresse}}
+                     
+                    </td>
+                    <td class="project-state">
+                        <a class="btn btn-info btn-sm "data-toggle="modal" data-target="#conseillersModal" >
+                            show conseillers
+                        </a>
+
+                    </td>
+                    <td  class="project-actions btn-sm">
+                        <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#updateModal">
+                            update
+                        </a>
+                        <a   class="btn btn-warning btn-sm" (click)="deleteAgence(obj._id)">
+                            delete
+                        </a>
+                    </td>
+                </tr>
+                
+               
+            </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </section>
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Agence</h5>
+          <button #CloseModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #updateform="ngForm" (ngSubmit)="updateAgence(updateform)">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">title</label>
+                    <input  name="title" ngModel required #title="ngModel" type="text" class="form-control" id="exampleFormControlInput1" placeholder="title">
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">addresse</label>
+                    <input  name="addresse" ngModel required #addresse="ngModel" type="text" class="form-control" id="exampleFormControlInput1" placeholder="addresse">
+                  </div>
+                  <input type="file" class="file-input" style="padding-bottom:15px ;" (change)="onFileSelected($event)" #fileUpload > <br>
+
+                  <button style="margin-left: 400px;" type="submit" class="btn btn-primary mb-2">update </button>
+               </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Agence</h5>
+          <button #CloseModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #addform="ngForm" (ngSubmit)="addAgence(addform)">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">title</label>
+                    <input  name="title" ngModel required #title="ngModel" type="text" class="form-control" id="exampleFormControlInput1" placeholder="title">
+                  </div>
+                  <input type="file" class="file-input" style="padding-bottom:15px ;" (change)="onFileSelected($event)" #fileUpload > <br>
+
+                  <br>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">addresse</label>
+                    <input  name="addresse" ngModel required #addresse="ngModel" type="text" class="form-control" id="exampleFormControlInput1" placeholder="addresse">
+                  </div>
+
+                  <button style="margin-left: 400px;" type="submit" class="btn btn-primary mb-2">Confirm </button>
+               </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="modal fade" id="conseillersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Conseillers</h5>
+          <button #CloseModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           conseillers
+        </div>
+      </div>
+    </div>
+  </div>

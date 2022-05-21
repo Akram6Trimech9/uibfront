@@ -31,8 +31,8 @@
            
             <div class="modal-body">
               <form  [formGroup]="form">
-                <label for="selectAction">Choisir un conseiller : </label>
-                <select ngModel name="option" class="form-control"    (change)= "Function(t.value)" #t>
+                <label for="selectAction">Choisir un conseiller :</label>
+                <select ngModel name="option" class="form-control"  (change)= "Function(t.value)" #t>
                     <option *ngFor="let op of Conseiller" [value]="op._id">
                         {{op.nom}} 
                     </option>

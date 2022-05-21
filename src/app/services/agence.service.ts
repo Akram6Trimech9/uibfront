@@ -12,10 +12,24 @@ export class AgenceService {
   get():Observable<any>{
    return this.http.get<any>(`${this.url}/`)
   }
+  addagence(agence:any):Observable<any>{
+    return this.http.post<any>(`${this.url}/`,agence)
+  }
+
+  updateagence(agence:any,id:String):Observable<any>{
+    return this.http.patch<any>(`${this.url}/${id}`,agence)
+  }
+  deleteAgence(id:String){
+    return this.http.delete<any>(`${this.url}/${id}`)
+  }
+
+
   getagenceByid(id:any):Observable<any>{
     return this.http.get<any>(`${this.url}/${id}`)
-  }  
+  }
+
   addconseillet(idag :any ,idcons:any,conseiller:any):Observable<any>{
     return this.http.post<any>(`${this.url}/conseiller/${idag}/${idcons}`,conseiller)
   }
+
 }

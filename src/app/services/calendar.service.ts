@@ -17,6 +17,8 @@ export class CalendarService {
 
 
   updateCalendar(id:any ,calendar:any) :Observable<any>{
+    console.log(id)
+    console.log(calendar)
     return this.http.patch<any>(`${this.url}/${id}`,calendar)
   }
 

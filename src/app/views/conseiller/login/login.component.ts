@@ -12,7 +12,7 @@ import { SocketIoService } from 'src/app/services/socket-io.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private adminService:UsersauthService,private router:Router,private socketio : SocketIoService) { }
+  constructor(private conseillerService:UsersauthService,private router:Router,private socketio : SocketIoService) { }
 
   ngOnInit(): void {
   }
@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
     'email':f.value.email,
      'mdp':f.value.mdp
    }
-   this.adminService.Login(conseillerLogin).subscribe((data)=>{
+   this.conseillerService.Login(conseillerLogin).subscribe((data)=>{
     this.socketio.connectToServer(data.token); 
-    this.adminService.issavetoken(data.token,data.role,data.nom)
+    this.conseillerService.issavetoken(data.token,data.role,data.nom)
      
      this.router.navigate(['conseiller/calendar'])
      })

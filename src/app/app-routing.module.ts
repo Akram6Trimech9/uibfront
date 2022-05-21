@@ -21,6 +21,8 @@ const routes: Routes = [
    //admin
   {path:'admin',component:AdminComponent,children:[
     {path:'dashboard',loadChildren:()=>import('./views/admin/dashboard/dashboard.module').then(m=>m.DashboardModule)},
+    {path:'feedbacks',loadChildren:()=>import('./views/admin/feedback/feedback.module').then(m=>m.FeedbackModule)},
+
   // {path:'loginAdmin',loadChildren:()=>import('./views/admin/login/login.module').then(m=>m.LoginModule)}
   ]},
   {path:'adminlogin',component:AuthAdminLayoutComponent},

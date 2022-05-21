@@ -61,37 +61,6 @@ export class RegistreConsComponent implements OnInit {
    console.log(this.ErrorMessage)
   })
  }
-//   role='client'
-//  nom : any ; 
-//  add(f:NgForm){ 
-//    console.log(f.value,this.email.value)
-//    this.nom=f.value.nom
-//  var formdata:any=new FormData();
-//  formdata.append("nom",f.value.nom)
-//  formdata.append("prenom",f.value.prenom)
-//  formdata.append("mdp",f.value.mdp)
-//  formdata.append("genre",f.value.gendre)
-//  formdata.append("numtel",f.value.numtel)
-//  formdata.append("cin",f.value.cin)
-//  formdata.append("email",this.email.value)
-//  formdata.append("role",this.role)
-//  formdata.append("image",this.fileselected)
-//  this.clientService.SignupUser(formdata).subscribe((data)=>{
-//    const  clientlogin:any={
-//     'email':this.email.value,
-//      'mdp':f.value.mdp
-//    }
-//    this.clientService.Login(clientlogin).subscribe((data)=>{
-//      this.clientService.issavetoken(data.token,data.role,data.nom)
-//      this.variable=false
-//      window.location.reload()
-//      this.dialogRef.close();
-//    })
-//   },(err:HttpErrorResponse)=>{
-//   this.ErrorMessage=err.error
-//   console.log(this.ErrorMessage)
-//  })
-
 
 
   
