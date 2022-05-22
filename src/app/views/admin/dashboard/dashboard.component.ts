@@ -85,11 +85,10 @@ export class DashboardComponent implements OnInit {
   updateAgence(updateform:NgForm){
      var formdata:any=new FormData();
 
-  
+
     formdata.append("title",updateform.value.title)
     formdata.append("addresse",updateform.value.addresse)
     formdata.append("image",this.fileselected)
-  
   
     this.agenceService.updateagence(formdata,this.selectedAgence).subscribe(res=>{
       this._snackBar.open("Agence updated");

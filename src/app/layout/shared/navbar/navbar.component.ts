@@ -25,9 +25,9 @@ notificationnum : String = "0" ;
   
   
   ngOnInit(): void {
-
     this.socket.getNotifications("rdv-notconfirmed-client").subscribe((res:any)=>{
         this.notification.getNotifications(this.clientService.getuserid()).subscribe(_notifications => {
+          console.log(_notifications)
       this.notifications=_notifications ;
       this.notificationnum=_notifications.length.toString();
        })

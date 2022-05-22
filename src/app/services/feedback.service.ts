@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
 export class FeedbackService {
   url="http://localhost:3000/feedback";
 
+
   constructor(private http : HttpClient) { }
 
 
   createFeedback(feedback:any) :Observable<any>{
-    console.log(feedback);
     return this.http.post<any>(`${this.url}/`,feedback)
   }
 
-  getFeedback() :Observable<any>{
-    return this.http.get<any>(`${this.url}`)
+  getFeedbacks() :Observable<any[]>{
+    return this.http.get<any[]>(`${this.url}`)
   }
 }
