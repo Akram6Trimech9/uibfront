@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/MaterialModule';
 import { RouterModule } from '@angular/router';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { NgChartsModule } from 'ng2-charts';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -22,6 +23,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgChartsModule,
      AppRoutingModule,
     LayoutModule,
     BrowserModule,

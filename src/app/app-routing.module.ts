@@ -17,11 +17,14 @@ const routes: Routes = [
    {path:'calendar/:id',loadChildren:()=>import('./views/client/calendar/calendar.module').then(m=>m.CalendarModule)},
     {path:'rdv',loadChildren:()=>import('./views/client/mesrdv/mesrdv.module').then(m=>m.MesrdvModule)},
     {path:'agences',loadChildren:()=>import('./views/client/agences/agence.module').then(m=>m.AgenceModule)}
+
    ]},
    //admin
   {path:'admin',component:AdminComponent,children:[
     {path:'dashboard',loadChildren:()=>import('./views/admin/dashboard/dashboard.module').then(m=>m.DashboardModule)},
     {path:'feedbacks',loadChildren:()=>import('./views/admin/feedback/feedback.module').then(m=>m.FeedbackModule)},
+    {path:'stats',loadChildren:()=>import('./views/admin/stats/stats.module').then(m=>m.StatsModule)}
+
 
   // {path:'loginAdmin',loadChildren:()=>import('./views/admin/login/login.module').then(m=>m.LoginModule)}
   ]},

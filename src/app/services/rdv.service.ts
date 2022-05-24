@@ -14,6 +14,9 @@ export class RdvService {
   getrdvbyclient(id:any):Observable<any>{
     return this.http.get<any>(`${this.url}/conseiller/${id}`)
   }
+  getrdvs():Observable<any>{
+    return this.http.get<any[]>(`${this.url}`)
+  }
   getrdvbyconseiller(id:any):Observable<any>{
     return this.http.get<any>(`${this.url}/conseiller/${id}`)
   }
