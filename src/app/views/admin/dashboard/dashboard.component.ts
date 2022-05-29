@@ -97,6 +97,30 @@ export class DashboardComponent implements OnInit {
   })
 
 }
-  
 
+
+idcons: any ;
+newagence: any ;
+FunctionConsid(id:any){
+  this.newagence=id
+  }
+
+update(idcon :any){
+this.idcons=idcon;
+}
+  
+updateconseil(form:NgForm){
+  console.log("old agence : ",this.idagence)
+  console.log("new agence : ",this.newagence)
+  const body = {
+    oldagence: this.idagence,
+    newagence : this.newagence
+  }
+  this.userService.updateconseilleragence(this.idcons,body).subscribe(res=>{
+    window.location.reload();
+  });
+
+
+
+}
 }

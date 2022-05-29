@@ -72,5 +72,8 @@ export class UsersauthService {
   validateUser(id:any):Observable<any> {
     return this.http.patch<any>(`${this.url}/conseiller/validate/${id}`,{})
  }
+ updateconseilleragence(id:any,body:any):Observable<any>{
+  return this.http.patch<any>(`${this.url}/conseiller/updateagence/${id}`,body);
+ }
 }
 

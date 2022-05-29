@@ -1,4 +1,4 @@
-<div class="w3-top">
+<div  class="w3-top">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
       <a   class="w3-bar-item w3-button"><img width="100px" routerLink=""  src="../../../../assets/images/uib.png"/></a>
      
@@ -6,38 +6,7 @@
 
 
 
-      <ul class="navbar-nav ml-auto">
-      
-          
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">{{notificationnum}}</span>
-          </a>
-          <div   class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">{{notificationnum}} notifications</span>
-           <div  *ngFor="let notification of notifications ">
-  
-            <div class="dropdown-divider"></div>
-            <a routerLink="MesRendezvous" class="dropdown-item">
-              <i class="fas fa-envelope mr-2">{{notification.message}}</i> 
-            </a>
-            <div class="dropdown-divider"></div>
-          </div>
-  
-  
-  
-          </div>
-        </li>
      
-
-      </ul>
-
-
-
-
-
 
 
 
@@ -46,7 +15,27 @@
       
       <!-- Float links to the right. Hide them on small screens -->
       <div  style="padding-top: 20px;" class="w3-right w3-hide-small">
-       
+      
+          
+          <!-- Notifications Dropdown Menu -->
+          <div class="w3-bar-item nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">{{notificationnum}}</span>
+            </a>
+            <div   style="margin-top: -10px; "  id="scroll" class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header">{{notificationnum}} notifications</span>
+             <div  *ngFor="let notification of notifications ">
+    
+              <div class="dropdown-divider"></div>
+              <a routerLink="MesRendezvous" class="dropdown-item">
+                <i  class="fas fa-envelope mr-2">{{notification.message}}</i> 
+              </a>
+              <div class="dropdown-divider"></div>
+            </div>
+    
+            </div>
+          </div>
         <a routerLinkActive="active" routerLink="" class="w3-bar-item w3-button">Accueil</a>
         <a  routerLinkActive="active" routerLink="rdv" class="w3-bar-item w3-button">Mes RDV</a>
         <a  routerLinkActive="active" routerLink="agences" class="w3-bar-item w3-button">Agences</a>

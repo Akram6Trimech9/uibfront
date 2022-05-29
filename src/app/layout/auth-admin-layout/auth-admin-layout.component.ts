@@ -23,7 +23,7 @@ export class AuthAdminLayoutComponent implements OnInit {
      this.adminService.Login(adminLogin).subscribe((data)=>{
       this.adminService.issavetoken(data.token,data.role,data.nom)
        
-       this.router.navigate(['admin'])
+       this.router.navigate(['admin/stats'])
        })
       }
 }
