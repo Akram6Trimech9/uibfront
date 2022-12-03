@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    environment {
+    }
+    stages {
+        stage('Checkout project') {
+            steps {
+                git branch: 'master',
+                url: 'https://github.com/Akram6Trimech9/uibfront.git'                
+            }
+        }
+        stage('Install dependencies') {
+            steps {
+                sh "put something here"
+            }
+        }
+        stage('Build'){
+            steps {
+                sh "put something here"
+            }
+        }
+        
+          stage('Deploy'){
+            steps {
+                sh "put something here"
+            }
+        }
+        
+    }
+        post { 
+        success { 
+            echo "pipeline has been executed successfully"
+            sh ''
+        }
+    }
+
+}
